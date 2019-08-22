@@ -1,15 +1,8 @@
 import React, { Component, Fragment } from "react";
 import "./App.css";
+import ListItems from "./component/ListItems";
 
 class App extends Component {
-  state = {
-    items: [],
-    message: "",
-    displayItem: "",
-    edit: false,
-    current: null
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.edit) {
@@ -92,35 +85,7 @@ class App extends Component {
             <Fragment>
               {message && <p>{message}</p>}
               <table className="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {items.map((item, i) => (
-                    <tr key={i}>
-                      <td>{i + 1}</td>
-                      <td>{item}</td>
-                      <td>
-                        <button onClick={() => this.handleEdit(item, i)}>
-                          <i className="fas fa-edit" />
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-sm btn-danger"
-                          onClick={() => this.removeItem(i)}
-                        >
-                          <i className="fas fa-trash-alt" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                <ListItems />
                 <tfoot>
                   <tr>
                     <td colSpan="4">
